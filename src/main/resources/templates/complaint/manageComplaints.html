@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleafe.org">
+    <head th:replace="fragments/header :: header">
+        <meta charset="UTF-8"/>
+        <title>Smart Card</title>
+    </head>
+    <body class="body-wrapper">
+        <div th:replace="fragments/navbar :: navbar"></div>
+
+
+        <section class="page-title bg-title overlay-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="title">
+                            <h3>Manage Complaints</h3>
+                        </div>
+                        <ol class="breadcrumb p-0 m-0">
+                            <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+                            <li class="breadcrumb-item active">Manage Complaints</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="news section">
+            <div class="container">
+                <div class="row mt-30">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <div class="block" th:each="complaint : ${complaints}">
+                            <!-- Article -->
+
+                            <article class="blog-post single">
+
+                                <!--						<div class="post-thumb">
+                                                                                        <img src="images/news/single-post.jpg" alt="post-image" class="img-fluid">
+                                                                                </div>-->
+                                <div class="post-content">
+                                    <div class="date" th:if="${complaint.createdDate != null}">
+                                        <h4 th:text="${#dates.format(complaint.createdDate,'yyyy/MM/dd')}">
+                                            20<span>May</span></h4>
+                                    </div>
+                                    <div class="post-title">
+                                        <h3 th:text="${complaint.title}"></h3>
+                                    </div>
+                                    <div class="post-details">
+                                        <p  th:text="${complaint.message}"></p>
+                                    </div>
+                                </div>
+                            </article>
+                            <div class="comment-form">
+                                <form th:action="@{/dashboard/manipulate-complaint/} + ${complaint.id}" class="row" method="post">
+                                    <h5>Leave A Notice a bout manipulation</h5>
+                                    <!--<input type="hidden" th:value=""/>-->
+                                    <div class="col-12">
+                                        <textarea name="notice" class="form-control main" rows="10" placeholder="Your Review"></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-main-md" type="submit">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div th:replace="fragments/footer :: footer"></div>
+    </body>
+</html>

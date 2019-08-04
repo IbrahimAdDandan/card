@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleafe.org">
+    <head th:replace="fragments/header :: header">
+        <meta charset="UTF-8"/>
+        <title>Smart Card</title>
+    </head>
+    <body class="body-wrapper">
+        <div th:replace="fragments/navbar :: navbar"></div>
+
+        <section class="page-title bg-title overlay-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="title">
+                            <h3>My Cards</h3>
+                        </div>
+                        <ol class="breadcrumb p-0 m-0">
+                            <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+                            <li class="breadcrumb-item active">My Cards</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section contact-form">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <h3>Table Of <span class="alternate">My Cards</span></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="table-danger">Serial Number</th>
+                            <th scope="col" class="table-danger">Status</th>
+                            <th scope="col" class="table-danger">Expire Date</th>
+                            <th scope="col" class="table-danger">Ammount</th>
+                            <th scope="col" class="table-danger">Rest Ammount</th>
+                            <th scope="col" class="table-danger">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr th:each="card : ${myCards}">
+                            <td th:text="${card.id}"></td>
+                            <td th:text="${card.status}"></td>
+                            <td th:text="${card.expireDate}"></td>
+                            <td th:text="${card.ammount}"></td>
+                            <td th:text="${card.restAmmount}"></td>
+                            <td>
+                                <a th:href="@{/my-cards/} + ${card.id}">Manage</a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <div th:replace="fragments/footer :: footer"></div>
+    </body>
+</html>

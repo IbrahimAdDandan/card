@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleafe.org">
+    <head th:replace="fragments/header :: header">
+        <title>TODO supply a title</title>
+    </head>
+    <body class="body-wrapper">
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <section class="registration">
+            <div class="container-fuild p-0">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 p-0">
+                        <div class="service-block bg-service overlay-primary text-center">
+                            <div class="row no-gutters">
+                                <div class="col-6">
+                                    <!-- Service item -->
+                                    <div class="service-item">
+                                        <i class="fa fa-microphone"></i>
+                                        <h5>We raise your voice</h5>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <!-- Service item -->
+                                    <div class="service-item">
+                                        <i class="fa fa-flag"></i>
+                                        <h5>Notifications</h5>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <!-- Service item -->
+                                    <div class="service-item">
+                                        <i class="fa fa-ticket"></i>
+                                        <h5>Seek a reservation</h5>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <!-- Service item -->
+                                    <div class="service-item">
+                                        <i class="fa fa-calendar"></i>
+                                        <h5>Events reminder</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 p-0">
+                        <div class="registration-block bg-registration overlay-dark">
+                            <div class="block">
+                                <div class="title text-left">
+                                    <h3>Request for <span class="alternate">new Smart Card</span></h3>
+                                    <p>More services available</p>
+                                </div>
+                                <form th:object="${request}" th:action="@{create-new-card-req}" class="row" method="post">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control main" th:field="*{full_name}" placeholder="Full Name"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="number" class="form-control main" th:field="*{nationalId}" placeholder="National Number"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control main" th:field="*{address}" placeholder="Address"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="number" class="form-control main" th:field="*{phone}" placeholder="Phone"/>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-white-md">Request Now</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

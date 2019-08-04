@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleafe.org">
+    <head th:replace="fragments/header :: header">
+        <title>Login</title>
+    </head>
+    <body>
+        <div th:replace="fragments/navbar :: navbar"></div>
+        <section class="map new">
+        <!-- Google Map -->
+        <div id="map"></div>
+        <div class="address-block auth-page">
+            <h4>Smart Card platform</h4>
+            <ul class="address-list p-0 m-0">
+                <li><i class="fa fa-home"></i><span>Your Home<br/>shorten distences, <br/> shorten time</span></li>
+
+            </ul>
+            <!--<a href="#" class="btn btn-white-md">Get Direction</a>-->
+        </div>
+        <div class="register overlay-dark bg-registration-two">
+            <div class="block">
+                <div class="title text-center">
+                    <h3>Login to <span class="alternate">Smart Card platform</span></h3>
+                    <p>to enjoy more services</p>
+                    <p th:text="${SPRING_SEURITY_LAST_EXCEPTION?.message}"></p>
+                </div>
+                <form th:object="${user}" th:action="@{login}" class="row" method="post">
+                    <input type="hidden" th:field="*{id}"/>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control main" th:field="*{username}" placeholder="Username"/>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="password" class="form-control main" th:field="*{password}" placeholder="Password"/>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-white-md">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </section>
+        <div th:replace="fragments/footer :: footer"></div>
+    </body>
+</html>

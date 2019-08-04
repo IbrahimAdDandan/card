@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleafe.org">
+    <head th:replace="fragments/header :: header">
+        <meta charset="UTF-8"/>
+        <title>Register</title>
+    </head>
+    <body class="body-wrapper">
+        <div th:replace="fragments/navbar :: navbar"></div>
+        
+        <section class="section contact-form">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <h3>Create new <span class="alternate">User</span></h3>
+                        </div>
+                    </div>
+                </div>
+                <form th:object="${user}" th:action="@{/manage-users/create}" class="row" method="post">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control main" th:field="*{full_name}"  placeholder="Full Name"/>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" class="form-control main" th:field="*{email}"  placeholder="Email"/>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <select class="form-control main" th:field="*{role_name}">
+                                <option value="MANAGER">Manager</option>
+                                <option value="ADMIN">Administrator</option> 
+                                <option value="STATION_EMP">Station Employee</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control main" th:field="*{username}" placeholder="Username"/>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="password" class="form-control main" th:field="*{password}" placeholder="Password"/>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-main-md">Create</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <div th:replace="fragments/footer :: footer"></div>
+    </body>
+</html>

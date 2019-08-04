@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleafe.org">
+    <head th:replace="fragments/header :: header">
+        <meta charset="UTF-8"/>
+        <title>Smart Card</title>
+    </head>
+    <body class="body-wrapper">
+        <div th:replace="fragments/navbar :: navbar"></div>
+        <section class="page-title bg-title overlay-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="title">
+                            <h3 th:text="${station.name}">Station</h3>
+                        </div>
+                        <ol class="breadcrumb p-0 m-0">
+                            <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+                            <li class="breadcrumb-item"><a th:href="@{/stations}">Stations</a></li>
+                            <li class="breadcrumb-item active" th:text="${station.name}"></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section pricing">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <h3>Station:  
+                                <span class="alternate" th:text="${station.name}"></span>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Pricing Item -->
+                        <div class="pricing-item featured">
+                            <div class="pricing-heading">
+                                <!-- Title -->
+                                <div class="title">
+                                    <h6>Queue</h6>
+                                </div>
+                                <!-- Price -->
+                                <div class="price">
+                                    <h2 th:text="${station.queueCount}"></h2>
+                                    <p>Person</p>
+                                </div>
+                            </div>
+                            <div class="pricing-footer text-center">
+                                <a th:href="@{/station/queue-increment/} + ${station.id}" class="btn btn-main-md">Add to Queue</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Pricing Item -->
+                        <div class="pricing-item featured">
+                            <div class="pricing-heading">
+                                <!-- Title -->
+                                <div class="title">
+                                    <h6>Ammount</h6>
+                                </div>
+                                <!-- Price -->
+                                <div class="price">
+                                    <h2 th:text="${station.ammount}"></h2>
+                                    <p>Litre</p>
+                                </div>
+                            </div>
+                            <div class="pricing-footer text-center">
+                                <a th:href="@{/}" class="btn btn-main-md">Refill Request</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section contact-form" id="fill-operation-form">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <h3>New <span class="alternate">Fill Operation</span></h3>
+                            <p class="alert-danger" th:if="${error != null}" th:text="${'ERROR: ' + error}"></p>
+                            <p class="alert-success" th:if="${success != null}" th:text="${'SUCCESS ' + success}"></p>
+                        </div>
+                    </div>
+                </div>
+                <form th:action="@{/station/fill-operation}" class="row" method="post">
+                    <input type="hidden" name="stationId" th:value="${station.id}"/>
+                    <div class="col-md-6">
+                        <input type="number" class="form-control main" name="cardId"  placeholder="Card Idintifier Number"/>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control main" name="ammount" placeholder="Ammount"/>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-main-md">Save</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <div th:replace="fragments/footer :: footer"></div>
+    </body>
+</html>

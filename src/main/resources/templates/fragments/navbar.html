@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleafe.org">
+<head>
+    <title>Title</title>
+</head>
+<body>
+<nav class="navbar main-nav border-less fixed-top navbar-expand-lg p-0" th:fragment="navbar">
+    <div class="container-fluid p-0">
+        <!-- logo -->
+        <a class="navbar-brand" href="#">
+            <!--<img src="images/logo.png" alt="logo">-->
+            SmartCard
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item" th:classappend="${ #httpServletRequest.getRequestURI() == '/' ? 'active' : ''}">
+                    <a class="nav-link" th:href="@{/}" >Home<span>/</span>
+                        <!--<span>/</span>-->
+                    </a>
+                </li>
+                <li class="nav-item dropdown dropdown-slide">
+                    <a class="nav-link" href="#" data-toggle="dropdown">Services<span>/</span></a>
+                    <!-- Dropdown list -->
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" th:href="@{/new-card}">New Card Request</a>
+                        <a class="dropdown-item" th:href="@{/stop-card}">Stop Card Request</a>
+                        <a class="dropdown-item" th:href="@{/search-request}">Search New Card Request</a>
+                        <a class="dropdown-item" th:href="@{/search-stop-request}">Search Stop Card Request</a>
+                        <a class="dropdown-item" th:href="@{/complaint-form}">Complaine</a>
+                    </div>
+                </li>
+                <li class="nav-item" th:if="${#strings.toString(role)} == 'CETIZEN'" th:classappend="${ #httpServletRequest.requestURI.startsWith('/my-cards') ? 'active' : ''}">
+                    <a class="nav-link" th:href="@{/my-cards/}">My Cards<span>/</span></a>
+                </li>
+                <li class="nav-item dropdown dropdown-slide" th:if="${#strings.toString(role)} == 'MANAGER'" th:classappend="${ #httpServletRequest.requestURI.startsWith('/dashboard') ? 'active' : ''}">
+                    <a class="nav-link" href="#" data-toggle="dropdown">Dashboard<span>/</span></a>
+                    <!-- Dropdown list -->
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" th:href="@{/dashboard/cards}"> Manage Cards</a>
+                        <a class="dropdown-item" th:href="@{/dashboard/manage-new-card}">Manage New Card Requests</a>
+                        <a class="dropdown-item" th:href="@{/dashboard/manage-stop-card}">Manage Stop Card Request</a>
+                        <a class="dropdown-item" th:href="@{/dashboard/manage-complaints}">Manage Complaints</a>
+                        <a class="dropdown-item" th:href="@{/dashboard/manage-faq}">Manage FAQ</a>
+                        <a class="dropdown-item" th:href="@{/dashboard/fraud}">Fraud Attemps</a>
+                        <a class="dropdown-item" th:href="@{/dashboard/statistics}">Statistics</a>
+                    </div>
+                </li>
+                <li class="nav-item" th:if="${#strings.toString(role)} == 'ADMIN'" th:classappend="${ #httpServletRequest.getRequestURI() == '/manage-users/' ? 'active' : ''}">
+                    <a class="nav-link" th:href="@{/manage-users/}">Users<span>/</span></a>
+                </li>
+                <li class="nav-item" th:if="${#strings.toString(role)} == 'ADMIN'" th:classappend="${ #httpServletRequest.getRequestURI() == '/log' ? 'active' : ''}">
+                    <a class="nav-link" th:href="@{/log}">Log<span>/</span></a>
+                </li>
+                <li class="nav-item" th:classappend="${ #httpServletRequest.getRequestURI() == '/faq' ? 'active' : ''}">
+                    <a class="nav-link" th:href="@{/faq}">FAQ<span>/</span></a>
+                </li>
+                <li class="nav-item"  th:classappend="${ #httpServletRequest.getRequestURI() == '/stations' ? 'active' : ''}">
+                    <a class="nav-link" th:href="@{/stations}">
+                        Stations</a>
+                </li>
+                <li class="nav-item"  th:classappend="${ #httpServletRequest.getRequestURI() == '/closest-station' ? 'active' : ''}">
+                    <a class="nav-link" th:href="@{/closest-station}">
+                        Closest Stations</a>
+                </li>
+            </ul>
+            <a th:if="${username == null}" th:href="@{/login}" class="ticket">
+                <span>
+                    Login
+                </span>
+            </a>
+            <a th:if="${username == null}" th:href="@{register}" class="ticket">
+                <!--<img src="images/icon/ticket.png" alt="ticket">-->
+                <span>
+                    Register
+                </span>
+            </a>
+            <div th:if="${username != null}">
+                
+                <!--<a class="btn" style="color: #ffbbdd;" th:href="@{/logout}">logout</a>-->
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item dropdown dropdown-slide">
+                    <a class="nav-link" href="#" data-toggle="dropdown">
+                        Welcome <span th:text="${username}">Guest</span>
+                    </a>
+                    <!-- Dropdown list -->
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="about-us.html" th:href="@{/logout}">logout</a>
+                        <a class="dropdown-item" href="single-speaker.html">Profile</a>
+                        <a class="dropdown-item" href="gallery.html">Notifications</a>
+                    </div>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+</body>
+</html>

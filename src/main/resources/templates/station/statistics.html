@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleafe.org">
+    <head th:replace="fragments/header :: header">
+        <meta charset="UTF-8"/>
+        <title>Smart Card</title>
+    </head>
+    <body class="body-wrapper">
+        <div th:replace="fragments/navbar :: navbar"></div>
+        <section class="page-title bg-title overlay-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="title">
+                            <h3>Statistics</h3>
+                        </div>
+                        <ol class="breadcrumb p-0 m-0">
+                            <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+                            <li class="breadcrumb-item active">Statistics</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section contact-form">
+            <div class="container">
+                <div id="fillops-chart" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+                <br/>
+                <div id="ammount-chart" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+                <br/>
+                <div id="total-ammount-chart" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+                <br/>
+                <div id="fraudops-chart" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+            </div>
+        </section>
+        <script th:src="@{/plugins/code/lib/canvg.js}" ></script>
+        <script th:src="@{/plugins/code/lib/jspdf.js}" ></script>
+        <script th:src="@{/plugins/code/lib/rgbcolor.js}"></script>
+        <script th:src="@{/plugins/code/lib/svg2pdf.js}"></script>
+        <script th:src="@{/plugins/code/highcharts.js}"></script>
+        <script th:src="@{/plugins/code/modules/exporting.js}"></script>
+        <script th:src="@{/plugins/code/modules/offline-exporting.js}"></script>
+        <script th:src="@{/js/statistics.js}"></script>
+
+        <div th:replace="fragments/footer :: footer"></div>
+    </body>
+</html>

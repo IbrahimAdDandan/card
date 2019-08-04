@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleafe.org">
+    <head th:replace="fragments/header :: header">
+        <meta charset="UTF-8"/>
+        <title>Smart Card</title>
+    </head>
+    <body class="body-wrapper">
+        <div th:replace="fragments/navbar :: navbar"></div>
+
+        <section class="page-title bg-title overlay-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="title">
+                            <h3>Fraud Attemps</h3>
+                        </div>
+                        <ol class="breadcrumb p-0 m-0">
+                            <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+                            <li class="breadcrumb-item active">Fraud Attemps</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section contact-form">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <h3>Table Of <span class="alternate">Fraud Attepms</span></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="table-danger">Station</th>
+                            <th scope="col" class="table-danger">Card</th>
+                            <th scope="col" class="table-danger">Employee</th>
+                            <th scope="col" class="table-danger">Type</th>
+                            <th scope="col" class="table-danger">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="fraud : ${frauds}">
+                            <td th:text="${fraud.station.name}"></td>
+                            <td th:text="${fraud.card?.id}"></td>
+                            <td th:text="${fraud.username}"></td>
+                            <td th:text="${fraud.type}"></td>
+                            <td th:text="${fraud.createdDate}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <div th:replace="fragments/footer :: footer"></div>
+    </body>
+</html>

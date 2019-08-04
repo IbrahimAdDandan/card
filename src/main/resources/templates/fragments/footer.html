@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleafe.org">
+<head>
+    <title>Title</title>
+</head>
+<body>
+    <div th:fragment="footer">
+        <footer class="subfooter">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6 align-self-center">
+                  <div class="copyright-text">
+                    <p><a href="#">Syrian Smart Card</a> &#169; 2019 All Right Reserved</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <a href="#" class="to-top"><i class="fa fa-angle-up"></i></a>
+                </div>
+              </div>
+            </div>
+          </footer>
+
+        <script th:src="@{/plugins/jquery/jquery.js}"></script>
+        <!-- Popper js -->
+        <script th:src="@{/plugins/popper/popper.min.js}"></script>
+        <!-- Bootstrap 4 -->
+        <script th:src="@{/plugins/bootstrap/js/bootstrap.min.js}"></script>
+        <!-- Smooth Scroll -->
+        <script th:src="@{/plugins/smoothscroll/SmoothScroll.min.js}"></script>
+        <!-- Isotope -->
+        <script th:src="@{/plugins/isotope/mixitup.min.js}"></script>
+        <!-- Magnific Popup -->
+        <script th:src="@{/plugins/magnific-popup/jquery.magnific-popup.min.js}"></script>
+        <!-- Slick Carousel -->
+        <script th:src="@{/plugins/slick/slick.min.js}"></script>
+        <!-- SyoTimer -->
+        <script th:src="@{/plugins/syotimer/jquery.syotimer.min.js}"></script>
+        <script th:src="@{/js/custom.js}"></script>
+    </div>
+</body>
+</html>
